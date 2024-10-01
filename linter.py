@@ -74,7 +74,7 @@ def main():
     parser.add_argument("-c", "--collection", help="Collection ID")
     parser.add_argument("-w", "--workspace", help="Workspace ID")
     parser.add_argument("-r", "--ruleset", help="Path to the ruleset")
-    parser.add_argument("-p", "--path", help="Input file path")
+    parser.add_argument("-p", "--path", help="Input file path (Collection only)")
     parser.add_argument("-o", "--output", help="Output file path")
 
     args = parser.parse_args()
