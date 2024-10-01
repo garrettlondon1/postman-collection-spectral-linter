@@ -93,7 +93,11 @@ def main():
     resource_type = "collection" if (args.collection or args.path) else "workspace"
     uid = args.collection if args.collection else args.workspace
     source_json_file = f"_{resource_type}.json"
-    ruleset_path = "rules.yaml" if resource_type == "collection" else "workspacerules.yaml"
+    #ruleset_path = "rules.yaml" if resource_type == "collection" else "workspacerules.yaml"
+    if(args.ruleset):
+        ruleset_path = args.ruleset
+    else:
+        ruleset_path = "./rulesets/collection-rules.yaml" if resource_type == "collection" else "./rulesets/rules.yaml"
 
     # Fetch JSON data from Postman API
     print("Fetching JSON data from Postman API...")

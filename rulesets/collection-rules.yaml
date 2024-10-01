@@ -1,0 +1,29 @@
+functions:
+  [
+    folderDescription,
+    request2XXor3XXResponse,
+    deleteResponse200or204,
+    pathVariablesRequire404Response,
+    requestNameShouldNotEndInCopy,
+    patchRequestShouldHaveBody,
+    requestWithAuthRequire401Response,
+  ]
+rules:
+  no-internal-header:
+    message: header {{path}}  {{error}}
+    given: $.item..request.header[*]
+    severity: error
+    then:
+      field: key
+      function: pattern
+      functionOptions: 
+        notMatch: '/^x-internal/i'  
+  no-null-query-params:
+    description: No null or empty query params
+    message: query {{path}}  {{error}}
+    given: $.item..request.url.query[*]
+    severity: error
+    then:
+      field: value
+      function: truthy
+  
