@@ -10,7 +10,7 @@ functions:
   ]
 rules:
   no-internal-header:
-    message: Internal header should be removed {{path}} 
+    message: Internal header {{property}} should be removed {{path}} 
     given: $.item..request.header[*]
     severity: error
     then:

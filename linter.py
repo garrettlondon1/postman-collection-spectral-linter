@@ -24,14 +24,15 @@ def lint_json(file_path, ruleset_path):
     spectral_path = "/Users/bryancross/.nvm/versions/node/v18.18.0/bin/spectral" # Adjust this path
     try:
         result = subprocess.run(
-            [spectral_path, "lint", file_path, "--ruleset", ruleset_path, "-f", "json", "--quiet"],
+            [spectral_path, "lint", file_path, "--ruleset", ruleset_path, "-f", "json"],
             capture_output=True, text=True
         )
+        print(result.stdout);
         return json.loads(result.stdout)
     except subprocess.CalledProcessError as e:
         print(f"Spectral linting failed with error: {e.stderr}")
         sys.exit(1)
-    except json.JSONDecodeError:
+    except json.JSONDecodeError as j:
         print("Failed to decode JSON from Spectral output. Please check the output manually.")
         sys.exit(1)
 
