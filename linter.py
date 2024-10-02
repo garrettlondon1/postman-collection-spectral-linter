@@ -21,7 +21,7 @@ def fetch_json_from_postman(api_key, uid, resource_type):
 
 def lint_json(file_path, ruleset_path):
     
-    spectral_path = "/opt/homebrew/bin/spectral" # Adjust this path
+    spectral_path = "/Users/bryancross/.nvm/versions/node/v18.18.0/bin/spectral" # Adjust this path
     try:
         result = subprocess.run(
             [spectral_path, "lint", file_path, "--ruleset", ruleset_path, "-f", "json", "--quiet"],

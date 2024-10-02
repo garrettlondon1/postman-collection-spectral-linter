@@ -10,7 +10,7 @@ functions:
   ]
 rules:
   no-internal-header:
-    message: header {{path}}  {{error}}
+    message: Internal header should be removed {{path}} 
     given: $.item..request.header[*]
     severity: error
     then:
@@ -20,7 +20,7 @@ rules:
         notMatch: '/^x-internal/i'  
   no-null-query-params:
     description: No null or empty query params
-    message: query {{path}}  {{error}}
+    message: query paramaeter at{{path}} should not be blank/null
     given: $.item..request.url.query[*]
     severity: error
     then:
